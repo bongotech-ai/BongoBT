@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DeviceConnect"
+    android:background="#FFFFFF"
+    >
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/sendParent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/tvDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please Wait"
+                android:layout_margin="16dp"
+                android:textColor="#FF5722"
+                android:textSize="15sp"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/sendParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        >
+
+
+        <LinearLayout
+            android:id="@+id/laySend"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            >
+            <ImageView
+                android:id="@+id/imgSend"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/send_icon"
+                android:padding="10dp"
+                android:background="@drawable/circle_colored"
+                />
+
+            <ProgressBar
+                android:id="@+id/progressSend"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:visibility="gone"
+                />
+
+        </LinearLayout>
+
+
+
+
+        <EditText
+            android:id="@+id/edMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:padding="16dp"
+            android:textSize="18sp"
+            android:hint="Write a message"
+            android:textColor="#000000"
+            android:textColorHint="#CCCCCC"
+            android:layout_toLeftOf="@id/laySend"
+            android:background="@drawable/bottom_shade"
+            android:layout_marginRight="8dp"
+            />
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
