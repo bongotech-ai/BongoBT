@@ -21,7 +21,7 @@ _A simple and reliable Android Bluetooth communication library_
 Add the dependency in your **app-level** `build.gradle`:  
 
 ```gradle
-implementation "ai.bongotech:bongobt:1.0.2"
+implementation "ai.bongotech:bongobt:1.0.3"
 ```
 
 ---
