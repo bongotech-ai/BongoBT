@@ -1,6 +1,5 @@
 /*
- * Copyright 2025 Bongo iOTech Ltd. & Bongo Tech (www.bongotech.ai)
- * ©Jubayer Hossain, Founder of Bongo Tech
+ * Copyright 2025 Bongo iOTech Ltd. (www.bongotech.ai)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package ai.bongotech.bt;
 
 import androidx.fragment.app.FragmentActivity;
