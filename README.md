@@ -161,8 +161,8 @@ See the full [LICENSE](LICENSE) file for details.
 ---
 
 ## 👨‍💻 Author
-© Jubayer Hossain
-© Maintained by **Bongo iOTech Ltd.**
+Jubayer Hossain, Maintained by **Bongo iOTech Ltd.**
+
 🌍 Building IoT & Robotics solutions from Dhaka, Bangladesh  
 
-Website: [www.bongotech.ai](https://www.bongotech.ai)  
+👉 Website: [www.bongotech.ai](https://www.bongotech.ai)  
