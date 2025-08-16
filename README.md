@@ -23,6 +23,8 @@ Add the dependency in your **app-level** `build.gradle`:
 ```gradle
 implementation "ai.bongotech:bongobt:1.0.3"
 
+---
+
 ## 🔐 Permissions
 
 Add these permissions in your **AndroidManifest.xml**:
