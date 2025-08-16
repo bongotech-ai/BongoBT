@@ -1,5 +1,6 @@
 package ai.bongotech.sample;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -44,10 +45,25 @@ public class DeviceConnect extends AppCompatActivity {
 
         bongoBT = new BongoBT(this);
 
+
+        /*
+        // Optional // Serial Port Profile (SPP / default) Auto assigned
+        bongoBT.setUuid(java.util.UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
+         */
+
         bongoBT.connectTo(DEVICE_MAC, new BongoBT.BtConnectListener() {
+            @SuppressLint("MissingPermission")
             @Override
             public void onConnected() {
-                tvDisplay.setText("✅ Connected\n");
+                tvDisplay.setText("✅ Connected to: ");
+
+                BluetoothDevice device = bongoBT.getConnectedDevice();
+                if (device!=null) {
+                    String deviceName = device.getName();
+                    String deviceMac = device.getAddress();
+                    tvDisplay.append(deviceName);
+                    tvDisplay.append(" ("+deviceMac+")");
+                }
 
             }
 
@@ -58,7 +74,7 @@ public class DeviceConnect extends AppCompatActivity {
 
             @Override
             public void onError(String reason) {
-                tvDisplay.setText("❌ BT Connection Failed:\n"+reason);
+                tvDisplay.setText("❌ BT Connection Failed:\n"+reason+"\n");
             }
         });
 
@@ -76,8 +92,6 @@ public class DeviceConnect extends AppCompatActivity {
                 edMessage.setText("");
             }
         });
-
-
 
 
 

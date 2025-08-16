@@ -1,5 +1,8 @@
+
 plugins {
     alias(libs.plugins.android.library)
+    id "com.vanniktech.maven.publish" version "0.34.0"
+    id 'signing'
 }
 
 android {
@@ -8,7 +11,6 @@ android {
 
     defaultConfig {
         minSdk 24
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -19,16 +21,57 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+
+
+
+
 }
 
-dependencies {
+signing {
+    useGpgCmd()
+}
 
+mavenPublishing {
+    publishToMavenCentral(true)
+    signAllPublications()
+    coordinates('ai.bongotech', 'bongobt', '1.0.3')
+
+    pom {
+        name = "BongoBT"
+        description = "A lightweight Android Bluetooth library for quick discovery, seamless connection, and command sending."
+        inceptionYear = "2025"
+        url = "https://github.com/bongotech-ai/BongoBT"
+        licenses {
+            license {
+                name = "The Apache License, Version 2.0"
+                url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                distribution = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+        }
+        developers {
+            developer {
+                id = "bongotech-ai"
+                name = "Jubayer Hossain"
+                url = "https://github.com/bongotech-ai"
+            }
+        }
+        scm {
+            url = 'https://github.com/bongotech-ai/BongoBT'
+            connection = 'scm:git:git://github.com/bongotech-ai/BongoBT.git'
+            developerConnection = 'scm:git:ssh://git@github.com/bongotech-ai/BongoBT.git'
+        }
+    }
+}
+
+
+dependencies {
     implementation libs.appcompat
-    implementation libs.material
+    //implementation libs.material
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core

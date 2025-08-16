@@ -22,6 +22,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.UUID;
 
 public class BongoBT {
     // Jubayer Hossain @www.bongotech.ai
@@ -40,6 +41,15 @@ public class BongoBT {
         this.myContext = context;
     }
 
+    private BluetoothDevice connectedDevice;
+    public BluetoothDevice getConnectedDevice() {
+        return connectedDevice;
+    }
+
+    private void setConnectedDevice(BluetoothDevice connectedDevice) {
+        this.connectedDevice = connectedDevice;
+    }
+
 
     public interface BtDiscoveryListener {
         void onStarted();
@@ -47,6 +57,10 @@ public class BongoBT {
          void onFinished(ArrayList<HashMap<String, String>> arrayList);
         void onError(String errorReason);
     }
+
+
+
+
 
 
 
@@ -365,6 +379,24 @@ public class BongoBT {
     }
 
 
+
+    private static final UUID DEFAULT_SPP_UUID =
+            UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+
+    private UUID sppUuid;
+
+    // Setter
+    public void setUuid(UUID uuid) {
+        this.sppUuid = (uuid != null) ? uuid : DEFAULT_SPP_UUID;
+    }
+
+    // Getter
+    public UUID getUuid() {
+        return (sppUuid != null) ? sppUuid : DEFAULT_SPP_UUID;
+    }
+
+
+
     @SuppressLint("MissingPermission")
     private void finalBtConnection(String mac, BtConnectListener cb){
 
@@ -414,7 +446,9 @@ public class BongoBT {
             return;
         }
 
-        final java.util.UUID SPP_UUID = java.util.UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+        //final java.util.UUID SPP_UUID = java.util.UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+        if (sppUuid==null) sppUuid = DEFAULT_SPP_UUID;
+
 
         cancelOngoingConnect();
         disconnect();                    // ensure previous socket is dead
@@ -429,13 +463,13 @@ public class BongoBT {
                 // PATH A: already bonded → prefer SECURE first ~ Juba
                 if (bonded) {
                     try {
-                        socket = device.createRfcommSocketToServiceRecord(SPP_UUID);
+                        socket = device.createRfcommSocketToServiceRecord(sppUuid);
                         socket.connect();
                     } catch (Exception eSecureFirst) {
                         safeClose(socket); socket = null;
                         // Fallback insecure then secure again!
                         try {
-                            socket = device.createInsecureRfcommSocketToServiceRecord(SPP_UUID);
+                            socket = device.createInsecureRfcommSocketToServiceRecord(sppUuid);
                             socket.connect();
                         } catch (Exception eInsec) {
                             safeClose(socket); socket = null;
@@ -460,7 +494,7 @@ public class BongoBT {
                 } else {
                     // PATH B: not bonded → try INSECURE to pop pairing ~ Juba
                     try {
-                        socket = device.createInsecureRfcommSocketToServiceRecord(SPP_UUID);
+                        socket = device.createInsecureRfcommSocketToServiceRecord(sppUuid);
                         socket.connect();
                     } catch (Exception eInsecFirst) {
                         safeClose(socket); socket = null;
@@ -478,7 +512,7 @@ public class BongoBT {
                     // After bond, prefer SECURE
                     sleep(150);
                     try {
-                        socket = device.createRfcommSocketToServiceRecord(SPP_UUID);
+                        socket = device.createRfcommSocketToServiceRecord(sppUuid);
                         socket.connect();
                     } catch (Exception eSecure) {
                         safeClose(socket); socket = null;
@@ -508,6 +542,7 @@ public class BongoBT {
                 });
 
                 logd("✅ Connected: " + device.getName() + " [" + device.getAddress() + "]");
+                setConnectedDevice(device);
 
                 // Receive Command
                 BluetoothSocket finalSocket = socket;
