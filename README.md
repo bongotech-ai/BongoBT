@@ -22,3 +22,20 @@ Add the dependency in your **app-level** `build.gradle`:
 
 ```gradle
 implementation "ai.bongotech:bongobt:1.0.3"
+
+## 🔐 Permissions
+
+Add these permissions in your **AndroidManifest.xml**:
+<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+<uses-permission
+    android:name="android.permission.BLUETOOTH_SCAN"
+    android:usesPermissionFlags="neverForLocation" />
+<uses-permission
+    android:name="android.permission.BLUETOOTH"
+    android:maxSdkVersion="30" />
+<uses-permission
+    android:name="android.permission.BLUETOOTH_ADMIN"
+    android:maxSdkVersion="30" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
