@@ -13,14 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package ai.bongotech.sample;
-
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,21 +26,16 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import ai.bongotech.bt.BongoBT;
-import ai.bongotech.bt.BtPermissions;
 
 public class MainActivity extends AppCompatActivity {
-    // Jubayer Hossain @www.bongotech.ai
     BongoBT bongoBT = new BongoBT(this);
 
     ListView listView;

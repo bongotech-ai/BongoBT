@@ -13,12 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package ai.bongotech.sample;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -26,17 +22,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import ai.bongotech.bt.BongoBT;
 
 public class DeviceConnect extends AppCompatActivity {
-    // Jubayer Hossain @www.bongotech.ai
     TextView tvDisplay;
     EditText edMessage;
     LinearLayout laySend;
