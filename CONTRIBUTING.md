@@ -4,7 +4,7 @@ Thanks for your interest in contributing! 🎉
 This document explains how to report issues, propose features, and submit pull requests to the **BongoBT** Android Bluetooth library.
 
 By participating, you agree to follow our [Code of Conduct](CODE_OF_CONDUCT.md).
-For any questions, email **support@bongotech.ai**.
+For any questions, email **jubayer@bongotech.xyz**.
 
 ---
 
