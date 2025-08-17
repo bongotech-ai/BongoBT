@@ -67,19 +67,10 @@ public class DeviceConnect extends AppCompatActivity {
          */
 
         bongoBT.connectTo(DEVICE_MAC, new BongoBT.BtConnectListener() {
-            @SuppressLint("MissingPermission")
+
             @Override
             public void onConnected() {
-                tvDisplay.setText("✅ Connected to: ");
-
-                BluetoothDevice device = bongoBT.getConnectedDevice();
-                if (device!=null) {
-                    String deviceName = device.getName();
-                    String deviceMac = device.getAddress();
-                    tvDisplay.append(deviceName);
-                    tvDisplay.append(" ("+deviceMac+")");
-                }
-
+                tvDisplay.setText("✅ Connected");
             }
 
             @Override

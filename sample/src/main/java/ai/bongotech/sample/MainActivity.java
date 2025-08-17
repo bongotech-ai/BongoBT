@@ -46,7 +46,7 @@ import ai.bongotech.bt.BtPermissions;
 
 public class MainActivity extends AppCompatActivity {
     // Jubayer Hossain @www.bongotech.ai
-    BongoBT bongoBT;
+    BongoBT bongoBT = new BongoBT(this);
 
     ListView listView;
     Button btSearch;
@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
 
-        bongoBT = new BongoBT(this);
         bongoBT.enableLog(true);
 
         btSearch.setOnClickListener(new View.OnClickListener() {
