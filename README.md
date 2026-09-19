@@ -47,7 +47,7 @@ android:maxSdkVersion="30" />
 
 ---
 
-## 🚀 Usage
+## 🚀 Usage (Java)
 
 ### 1. Initialize Library
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
----
+
 
 ### 2. Search Nearby Devices
 
@@ -88,7 +88,7 @@ bongoBT.searchDevices(new BongoBT.BtDiscoveryListener() {
 });
 ```
 
----
+
 
 ### 3. Connect to a Device
 
@@ -112,7 +112,7 @@ bongoBT.connectTo("your_device_mac", new BongoBT.BtConnectListener() {
 });
 ```
 
----
+
 
 ### 4. Send Commands
 
@@ -120,7 +120,7 @@ bongoBT.connectTo("your_device_mac", new BongoBT.BtConnectListener() {
 bongoBT.sendCommand("your_command");
 ```
 
----
+
 
 ### 5. Optional — Custom UUID
 
@@ -130,7 +130,7 @@ bongoBT.sendCommand("your_command");
 bongoBT.setUuid(java.util.UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
 ```
 
----
+
 
 ### 6. Get Connected Device
 
@@ -143,6 +143,80 @@ String deviceMac = device.getAddress();
 ```
 
 ---
+
+
+
+## 🚀 Usage (Kotlin)
+
+### 1. Initialize Library
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+    private val bongoBT by lazy { BongoBT(this) }
+}
+```
+
+---
+
+### 2. Search Nearby Devices
+
+```kotlin
+bongoBT.searchDevices(object : BongoBT.BtDiscoveryListener {
+    override fun onStarted() {
+        // Discovery started
+    }
+
+    override fun onDeviceAdded(name: String, mac: String) {
+        // A new device discovered
+    }
+
+    override fun onFinished(arrayList: ArrayList<HashMap<String, String>>?) {
+        // Discovery finished
+        // Each device is stored as a HashMap inside the ArrayList
+        // name → hashMap["name"]
+        // mac  → hashMap["mac"]
+    }
+
+    override fun onError(errorReason: String) {
+        // Handle discovery error
+    }
+})
+```
+
+---
+
+### 3. Connect to a Device
+
+```kotlin
+bongoBT.connectTo("your_device_mac", object : BongoBT.BtConnectListener {
+    @SuppressLint("MissingPermission")
+    override fun onConnected() {
+        // Device is connected
+    }
+
+    override fun onReceived(message: String) {
+        // Message received from device
+    }
+
+    override fun onError(reason: String) {
+        // Handle connection error
+    }
+})
+```
+
+---
+
+### 4. Send Commands
+
+```kotlin
+bongoBT.sendCommand("your_command")
+```
+
+### Please check 'demo-kotlin' module for kotlin example
+
+---
+
+
 
 ## 📜 License
 
