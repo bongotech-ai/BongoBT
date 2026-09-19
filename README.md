@@ -146,6 +146,7 @@ String deviceMac = device.getAddress();
 
 
 
+
 ## 🚀 Usage (Kotlin)
 
 ### 1. Initialize Library
@@ -156,7 +157,7 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
----
+
 
 ### 2. Search Nearby Devices
 
@@ -183,7 +184,7 @@ bongoBT.searchDevices(object : BongoBT.BtDiscoveryListener {
 })
 ```
 
----
+
 
 ### 3. Connect to a Device
 
@@ -204,7 +205,7 @@ bongoBT.connectTo("your_device_mac", object : BongoBT.BtConnectListener {
 })
 ```
 
----
+
 
 ### 4. Send Commands
 
